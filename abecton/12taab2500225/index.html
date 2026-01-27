@@ -354,6 +354,15 @@
             alert('Right-click is disabled on this page');
             return false;
         }, false);
+
+        // Disable right-click on all images
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+                return false;
+            });
+        });
     </script>
 </body>
 
