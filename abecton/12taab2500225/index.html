@@ -347,6 +347,14 @@
             <p>Empowering Indian Agriculture with Digital Solutions</p>
         </div>
     </div>
+    <script>
+        // Block right-click on leaflet information page
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+            alert('Right-click is disabled on this page');
+            return false;
+        }, false);
+    </script>
 </body>
 
 </html>
