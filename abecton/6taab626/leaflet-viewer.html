@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Leaflet Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .image-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        .info-text {
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="../../../assets/leaflet/1253_20_15_14.jpg" alt="Product Leaflet" oncontextmenu="return false;" ondragstart="return false;">
+        <div class="info-text"></div>
+    </div>
+
+    <script>
+        // Block right-click on the entire page
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+            return false;
+        }, false);
+
+        // Block all keyboard shortcuts for saving/downloading
+        document.addEventListener('keydown', function(event) {
+            // Ctrl+S or Cmd+S
+            if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+                event.preventDefault();
+                return false;
+            }
+            // Ctrl+P or Cmd+P
+            if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
+                event.preventDefault();
+                return false;
+            }
+        }, false);
+
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(event) {
+            event.preventDefault();
+            return false;
+        }, false);
+
+        // Disable image dragging
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('dragstart', function(event) {
+                event.preventDefault();
+                return false;
+            });
+            img.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>
+
